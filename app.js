@@ -1,4 +1,5 @@
-const yargs = require('yargs')
+const yargs = require('yargs');
+const { simpanContact } = require('./contacts');
 
 yargs.command({
     command: 'add',
@@ -18,12 +19,14 @@ yargs.command({
 
     handler(argv) {
 
-        const contact = {
-            nama: argv.nama,
-            no_hp: argv.no_hp
-        }
+        simpanContact(argv.nama, argv.no_hp);
 
-        console.log(contact);
+        // const contact = {
+        //     nama: argv.nama,
+        //     no_hp: argv.no_hp
+        // }
+
+        // console.log(contact);
     }
     
 
