@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const { simpanContact , listContact } = require('./contacts');
+const { simpanContact , listContact , showContact } = require('./contacts');
 
 yargs.command({
     command: 'add',
@@ -42,7 +42,28 @@ yargs.command({
 
         listContact();
     }
-})
+});
+
+// Menampilkan detail kontak
+
+yargs.command({
+    command : 'show',
+    describe : 'Menampilkan detail kontak',
+    builder: {
+        nama: {
+            describe : "Nama kontak",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        // console.log('Menampilkan detail kontak', argv.nama);
+
+        showContact(argv.nama);
+    }
+});
+
+
 
 yargs.parse();
 

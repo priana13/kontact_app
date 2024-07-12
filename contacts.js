@@ -95,8 +95,24 @@ const listContact = () => {
 
 }
 
+const showContact = (nama) => {
+
+    const contacts = loadContact();
+
+    const contact = contacts.find((contact) => contact.nama.toLowerCase() === nama.toLowerCase());
+
+    if(!contact){
+        console.log('Kontak tidak ditemukan!');
+        return false;
+    }
+
+    console.log(contact);
+
+}
+
 module.exports = {
     tulisPertanyaan,
     simpanContact,
-    listContact
+    listContact,
+    showContact
 }
