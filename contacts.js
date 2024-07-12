@@ -40,14 +40,26 @@ const tulisPertanyaan = (pertanyaan) =>   {
     });
 }
 
+const loadContact = () => {
+
+    const fileBuffer = fs.readFileSync('data/contacts.json', 'utf-8');
+
+    const contacts = JSON.parse(fileBuffer);
+
+    return contacts;
+
+}
+
 
 const simpanContact = (nama, hp) => {
 
     const contact = {nama, hp};
 
-    const fileBuffer = fs.readFileSync('data/contacts.json', 'utf-8');
+    // const fileBuffer = fs.readFileSync('data/contacts.json', 'utf-8');
 
-    const contacts = JSON.parse(fileBuffer);
+    // const contacts = JSON.parse(fileBuffer);
+
+    const contacts = loadContact();
 
 
     const duplikat = contacts.find(contact => contact.nama === nama);
@@ -67,7 +79,24 @@ const simpanContact = (nama, hp) => {
 
 }
 
+const listContact = () => {
+
+    const contacts = loadContact();
+
+    console.log("Daftar Kontak : ");
+
+    contacts.forEach( (contact , i) => {
+
+        // console.log( i + 1 + '. ' + contact.nama + ' : ' + contact.hp);
+        console.log(`${i + 1}. ${contact.nama} : ${contact.hp}`);
+    });     
+
+    // console.table(contacts);
+
+}
+
 module.exports = {
     tulisPertanyaan,
-    simpanContact
+    simpanContact,
+    listContact
 }

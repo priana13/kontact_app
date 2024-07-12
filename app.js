@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const { simpanContact } = require('./contacts');
+const { simpanContact , listContact } = require('./contacts');
 
 yargs.command({
     command: 'add',
@@ -32,6 +32,17 @@ yargs.command({
 
 }).demandCommand();
 
+// menampilkan daftar semua kontak
+
+yargs.command({
+    command : 'list',
+    describe : 'Menampilkan daftar kontak',
+    handler() {
+        // console.log('Menampilkan daftar kontak');
+
+        listContact();
+    }
+})
 
 yargs.parse();
 
