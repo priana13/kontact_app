@@ -109,10 +109,34 @@ const showContact = (nama) => {
     console.log(contact);
 
 }
+const hapusContact = (nama) => {
+
+    const contacts = loadContact();
+
+    const newContact = contacts.filter((contact) => contact.nama.toLowerCase() !== nama.toLowerCase());
+
+    fs.writeFileSync('data/contacts.json', JSON.stringify(newContact, null, 2), 'utf-8' );
+
+    if( contacts.lenght === newContact.lenght ){
+
+        console.log('Kontak tidak ditemukan!');
+
+        return false;
+
+    }
+
+    console.log('Kontak berhasil dihapus!');
+    // console.log(contact);
+
+}
+
+
+
 
 module.exports = {
     tulisPertanyaan,
     simpanContact,
     listContact,
-    showContact
+    showContact,
+    hapusContact
 }
