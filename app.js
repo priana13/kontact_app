@@ -30,7 +30,7 @@ yargs.command({
     }
     
 
-});
+}).demandCommand();
 
 
 yargs.parse();
